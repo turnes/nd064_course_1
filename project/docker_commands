@@ -1,11 +1,46 @@
 ## Docker commands used to build the application 
 # TODO: insert the docker build command
+docker build -t techtrends .
 
 ## Docker commands used to run the application
 # TODO: insert the docker run command
+docker run --rm --name techtrends-flask -d -t -p 7111:3111 techtrends
 
 ## Docker commands used to get the application logs
 # TODO: insert the docker logs command
+docker logs techtrends-flask
 
 ## Logs from the container running the TechTrends application
 # TODO: paste logs from the Docker container 
+docker logs techtrends-flask
+* Serving Flask app "app" (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 276-879-065
+172.17.0.1 - - [26/Jul/2021 00:45:48] "GET / HTTP/1.1" 200 -
+[2021-07-26 00:45:49,971] INFO in app: Article 2020 CNCF Annual Report retrieved
+172.17.0.1 - - [26/Jul/2021 00:45:49] "GET /1 HTTP/1.1" 200 -
+172.17.0.1 - - [26/Jul/2021 00:45:52] "GET / HTTP/1.1" 200 -
+[2021-07-26 00:45:53,967] INFO in app: Article CNCF Cloud Native Definition v1.0 retrieved
+172.17.0.1 - - [26/Jul/2021 00:45:53] "GET /5 HTTP/1.1" 200 -
+172.17.0.1 - - [26/Jul/2021 00:45:55] "GET / HTTP/1.1" 200 -
+[2021-07-26 00:45:58,698] INFO in app: Article Kubernetes Certification retrieved
+172.17.0.1 - - [26/Jul/2021 00:45:58] "GET /6 HTTP/1.1" 200 -
+172.17.0.1 - - [26/Jul/2021 00:46:02] "GET / HTTP/1.1" 200 -
+[2021-07-26 00:46:05,140] INFO in app: Page About Us retrieved
+172.17.0.1 - - [26/Jul/2021 00:46:05] "GET /about HTTP/1.1" 200 -
+172.17.0.1 - - [26/Jul/2021 00:46:06] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [26/Jul/2021 00:46:07] "GET /create HTTP/1.1" 200 -
+[2021-07-26 00:46:19,967] INFO in app: Article A new Post created.
+172.17.0.1 - - [26/Jul/2021 00:46:19] "POST /create HTTP/1.1" 302 -
+172.17.0.1 - - [26/Jul/2021 00:46:19] "GET / HTTP/1.1" 200 -
+[2021-07-26 00:46:26,947] INFO in app: The post ID 3787723 not found
+172.17.0.1 - - [26/Jul/2021 00:46:26] "GET /3787723 HTTP/1.1" 404 -
+172.17.0.1 - - [26/Jul/2021 00:46:34] "GET / HTTP/1.1" 200 -
+[2021-07-26 00:46:36,130] INFO in app: Article A new Post retrieved
+172.17.0.1 - - [26/Jul/2021 00:46:36] "GET /7 HTTP/1.1" 200 -
+172.17.0.1 - - [26/Jul/2021 00:46:43] "GET /metrics HTTP/1.1" 200 -
+172.17.0.1 - - [26/Jul/2021 00:46:49] "GET /healthz HTTP/1.1" 200 -

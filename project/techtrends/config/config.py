@@ -17,4 +17,4 @@ class Config:
         handler.setFormatter(formatter)
         handler.setLevel(logging.INFO)
         logger = logging.getLogger('status')
-        logger.addHandler(handler)        
+        logger.addHandler(handler)

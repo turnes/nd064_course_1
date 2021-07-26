@@ -51,7 +51,7 @@ def index():
 def post(post_id):
     post = get_post(post_id)
     if post is None:
-      app.logger.info(f'The post ID {post_id} not found')
+      app.logger.info('The post ID ' + str(post_id) + ' not found')
       return render_template('404.html'), 404
     else:
       app.logger.info('Article ' + post['title'] + ' retrieved')
@@ -78,7 +78,7 @@ def create():
                          (title, content))
             connection.commit()
             connection.close()
-            app.logger.info(f'Article {title} created.')
+            app.logger.info('Article ' + title + ' created.')
             return redirect(url_for('index'))
 
     return render_template('create.html')
@@ -98,6 +98,5 @@ def metrics():
     }
     return jsonify(data)
 # start the application on port 3111
-if __name__ == "__main__":
-    
+if __name__ == "__main__":    
     app.run(host=Config.host, port=Config.port)
