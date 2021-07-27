@@ -85,10 +85,21 @@ def create():
 
 @app.route('/healthz')
 def healthz():
-    data = {
+    try:
+        connection = sqlite3.connect('database.db')
+        cursor = connection.cursor()
+        cursor.execute('SELECT * FROM posts').fetchall()
+        data = {
         'result': "OK - healthy"
-    }
-    return jsonify(data)
+        }
+        cursor.close()
+        connection.close()
+        return jsonify(data)  
+    except sqlite3.Error as error:
+        data = { 
+            'result': "ERROR - unhealthy"
+        }
+        return jsonify(data), 500    
 
 @app.route('/metrics')
 def metrics():
