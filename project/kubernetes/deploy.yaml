@@ -17,7 +17,7 @@ spec:
         app: techtrends
     spec:
       containers:
-      - image: techtrends:latest
+      - image: turnes/techtrends:latest
         name: techtrends
         ports:
           - containerPort: 3111
@@ -34,6 +34,6 @@ spec:
             memory: "64Mi"
             cpu: "250m"
           limits:
-            memory: "500m"
-            cpu: "128Mi"
+            memory: "128Mi"
+            cpu: "500m"
 
