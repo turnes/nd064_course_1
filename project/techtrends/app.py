@@ -1,5 +1,6 @@
 import sqlite3
 
+
 from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
 from werkzeug.exceptions import abort
 from config.config import Config
@@ -99,14 +100,18 @@ def healthz():
         data = { 
             'result': "ERROR - unhealthy"
         }
-        return jsonify(data), 500    
+        return jsonify(data), 500
 
 @app.route('/metrics')
 def metrics():
+    connection = get_db_connection()
+    cursor = connection.cursor()        
     data = {
         "db_connections_count": db_connections_count,
-        "post_count": len(get_db_connection().execute('SELECT * FROM posts').fetchall())
+        "post_count": len(cursor.execute('SELECT * FROM posts').fetchall())
     }
+    cursor.close()
+    connection.close()
     return jsonify(data)
 # start the application on port 3111
 if __name__ == "__main__":    
