@@ -4,6 +4,6 @@ description: project techtrends
 keywords: 
   - techtrends
 version: 1.0.0
-# maintainers:
-#   - name: Rafael Turnes
-#     email: contato@turnes.com.br
+maintainers:
+  - name: Rafael Turnes
+    email: contato@turnes.com.br

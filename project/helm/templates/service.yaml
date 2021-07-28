@@ -7,10 +7,15 @@ metadata:
   namespace: {{ .Values.namespace.name }}
 spec:
   ports:
-  - name: {{ .Values.service.port }}-{{ .Values.service.targetPort }}
-    port: {{ .Values.service.port }}
+  - port: {{ .Values.service.port }}
     protocol: {{ .Values.service.protocol }}
+    {{- if .Values.service.targetPort }}
     targetPort: {{ .Values.service.targetPort }}
+    name: {{ .Values.service.port }}-{{ .Values.service.targetPort }}
+    {{- else }}
+    targetPort: {{ .Values.service.port }}
+    name: {{ .Values.service.port }}-{{ .Values.service.port }}
+    {{- end }}
   selector:
     app: techtrends
   type: {{ .Values.service.ClusterIP }}
