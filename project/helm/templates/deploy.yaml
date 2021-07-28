@@ -23,12 +23,12 @@ spec:
           - containerPort: {{ .Values.containerPort }}
         readinessProbe:
           httpGet:
-            path: {{ .Values.readinessProbe }}
-            port: {{ .Values.containerPort }}
+            path: {{ .Values.readinessProbe.path }}
+            port: {{ .Values.readinessProbe.port }}
         livenessProbe:
           httpGet:
-            path: {{ .Values.livenessProbe }}
-            port: {{ .Values.containerPort }}
+            path: {{ .Values.livenessProbe.path }}
+            port: {{ .Values.livenessProbe.port }}
         resources:
           requests:
             memory: {{ .Values.resources.requests.memory }}

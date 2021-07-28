@@ -1,4 +1,6 @@
+import logging
 import sqlite3
+import sys
 
 
 from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
@@ -114,5 +116,8 @@ def metrics():
     connection.close()
     return jsonify(data)
 # start the application on port 3111
-if __name__ == "__main__":    
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.DEBUG)
+    logger = logging.getLogger()
+    logger.addHandler(logging.StreamHandler(sys.stdout))    
     app.run(host=Config.host, port=Config.port)
